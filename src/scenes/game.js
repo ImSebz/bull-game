@@ -100,7 +100,7 @@ export class Game extends Phaser.Scene {
         player.setCollideWorldBounds(true);
 
         this.add.image(width - 100, 100, 'score').setDepth(1);
-        scoreText = this.add.text(width - 135, 78, 'PTS: 0', { font: '40px primary-font', fill: '#fff' }).setDepth(1);
+        scoreText = this.add.text(width - 147, 78, 'PTS: 0', { font: '40px primary-font', fill: '#fff' }).setDepth(1);
     }
 
     getRandomNumber(min, max) {
