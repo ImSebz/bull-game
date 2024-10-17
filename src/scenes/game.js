@@ -55,7 +55,7 @@ export class Game extends Phaser.Scene {
         // Elems Fall
         elemsInterval = setInterval(() => {
             let elemKey = FALLING_ELEMENTS[this.getRandomNumber(0, FALLING_ELEMENTS.length)];
-            let elem = this.physics.add.sprite(Phaser.Math.Between(20, (width - 20)), 0, elemKey).setScale(1);
+            let elem = this.physics.add.sprite(Phaser.Math.Between(20, (width - 20)), 0, elemKey).setScale(1.2);
             elemsFall.push(elem);
         }, 600);
 
@@ -79,7 +79,7 @@ export class Game extends Phaser.Scene {
         }
 
         elemsFall.forEach(elem => {
-            elem.setAngularVelocity(Phaser.Math.RadToDeg(elem.body.velocity.y / 225));
+            elem.setAngularVelocity(Phaser.Math.RadToDeg(elem.body.velocity.y / 1250));
         });
     }
 
