@@ -9,14 +9,14 @@ export class Menu extends Phaser.Scene {
         mContext = this;
 
         startBtn.on('pointerdown', function () {
-            startBtn.setScale(1.6);
+            startBtn.setScale(0.8);
             setTimeout(() => {
                 mContext.scene.start('Game');
             }, 350);
         });
 
         startBtn.on('pointerout', () => {
-            startBtn.setScale(1.8);
+            startBtn.setScale(0.9);
         });
     }
 
