@@ -30,7 +30,6 @@ export class Preloader extends Phaser.Scene {
         this.load.image('bull2', './elems/bull_2.png');
         this.load.image('bull3', './elems/bull_3.png');
         this.load.image('bull4', './elems/bull_4.png');
-        this.load.image('logo-pan', './elems/pan.png');        
     }
 
     create ()
