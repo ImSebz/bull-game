@@ -99,8 +99,8 @@ export class Game extends Phaser.Scene {
         player.score = 0;
         player.setCollideWorldBounds(true);
 
-        this.add.image(width - 160, 100, 'score').setDepth(1);
-        scoreText = this.add.text(width - 98, 80, '0', { font: '40px primary-font', fill: '#fff' }).setDepth(1);
+        this.add.image(width - 100, 100, 'score').setDepth(1);
+        scoreText = this.add.text(width - 135, 78, 'PTS: 0', { font: '40px primary-font', fill: '#fff' }).setDepth(1);
     }
 
     getRandomNumber(min, max) {
@@ -109,7 +109,7 @@ export class Game extends Phaser.Scene {
 
     hitElem(player, elem) {
         if (elemsInterval) { player.score += 1; }
-        scoreText.setText(player.score);
+        scoreText.setText(`PTS: ${player.score}`);
         elemsFall.splice(elemsFall.indexOf(elem), 1);
         elem.destroy();
     }
