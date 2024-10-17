@@ -7,7 +7,7 @@ export class Preloader extends Phaser.Scene {
     preload ()
     {
         this.load.setPath('public/assets');
-        /* AREPAS */
+        /* CARRITO */
         this.load.image('player', './elems/carrito.png');   
         
         /* BUTTONS */
