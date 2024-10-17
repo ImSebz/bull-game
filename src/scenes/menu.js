@@ -22,6 +22,6 @@ export class Menu extends Phaser.Scene {
 
     init() {
         this.add.image(0, 0, 'background').setOrigin(0);
-        startBtn = this.add.image(((this.game.config.width) / 2), (this.game.config.height) - 180, 'start-btn').setScale(2).setInteractive();
+        startBtn = this.add.image(((this.game.config.width) / 2), (this.game.config.height) - 350, 'start-btn').setScale(1).setInteractive();
     }
 }
