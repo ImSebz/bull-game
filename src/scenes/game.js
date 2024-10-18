@@ -14,6 +14,14 @@ export class Game extends Phaser.Scene {
         super('Game');
     }
 
+    preload() {
+        // Cargar el spritesheet
+        this.load.spritesheet('player', './elems/carrito.png', {
+            frameWidth: 259, // 1036 / 4
+            frameHeight: 229
+        });
+    }
+
     create() {
         mContext = this;
         leftBtn.on('pointerdown', function () {
