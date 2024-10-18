@@ -3,7 +3,7 @@ let width, height, mContext, floor, player, elemsFall = [],
     scoreText, elemsInterval;
 
 // Movements
-let goRight = false, goLeft = false, leftBtn, rightBtn;
+let goRight = false, goLeft = false, leftBtn, rightBtn, gamepad1;
 
 // Filled
 const CARRITOVELOCITY = 600;
@@ -15,11 +15,6 @@ export class Game extends Phaser.Scene {
     }
 
     preload() {
-        // Cargar el spritesheet
-        this.load.spritesheet('player', './elems/carrito.png', {
-            frameWidth: 259, // 1036 / 4
-            frameHeight: 229
-        });
     }
 
     create() {
@@ -37,7 +32,6 @@ export class Game extends Phaser.Scene {
             leftBtn.setScale(1.5);
             goLeft = false;
         });
-
         // --------------------------------------
 
         rightBtn.on('pointerdown', function () {
@@ -71,6 +65,11 @@ export class Game extends Phaser.Scene {
         // Time
         setTimeout(() => {
             this.popUp();
+            /** GAMEPADS **/
+            mContext.input.gamepad.once('down', function (gamepad, button, value) {
+                mContext.GamepadControls();
+            });
+            /****/
         }, 30000);
 
         // Colliders
@@ -85,6 +84,31 @@ export class Game extends Phaser.Scene {
             player.setVelocityX(CARRITOVELOCITY);
         } else {
             player.setVelocityX(0);
+        }
+
+        // ---------------- GAMEPAD -------------- //
+        if (this.input.gamepad.total === 0)
+        {
+            return;
+        }
+
+        gamepad1 = this.input.gamepad.getPad(0);
+
+        if (gamepad1 && gamepad1.axes.length)
+        {
+            const axisH = gamepad1.axes[0].getValue();
+
+            if (axisH < 0){
+                goLeft = true;
+                goRight = false;
+            }else if (axisH > 0){
+                goRight = true;
+                goLeft = false;
+            }
+            else {
+                goRight = false;
+                goLeft = false;
+            }
         }
 
         elemsFall.forEach(elem => {
@@ -103,13 +127,23 @@ export class Game extends Phaser.Scene {
         leftBtn = this.add.image(250, height - 72, 'left-btn').setScale(1.5).setInteractive().setDepth(1);
         rightBtn = this.add.image(leftBtn.x + 200, height - 72, 'right-btn').setScale(1.5).setInteractive().setDepth(1);
 
-        player = this.physics.add.sprite((width / 2), height - 400, 'player', 0).setScale(0.5);
+        player = this.physics.add.sprite((width / 2), height - 400, 'player-idle', 0).setScale(0.5);
         player.setSize(280, 260, true);
         player.score = 0;
         player.setCollideWorldBounds(true);
 
         this.add.image(width - 100, 100, 'score').setDepth(1);
         scoreText = this.add.text(width - 147, 78, 'PTS: 0', { font: '40px primary-font', fill: '#fff' }).setDepth(1);
+
+        // ANIMATIONS
+        this.anims.create({
+            key: 'player-idle',
+            frames: this.anims.generateFrameNumbers('player-idle', { start: 0, end: 3 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+        player.play('player-idle');
     }
 
     getRandomNumber(min, max) {
@@ -145,6 +179,25 @@ export class Game extends Phaser.Scene {
 
         volver.on('pointerout', () => {
             volver.setScale(1.2);
+        });
+    }
+
+    GamepadControls(){
+        gamepad1.on('down', function (pad, button, value) {
+            if (pad === 2){
+                setTimeout(() => {
+                    window.location.reload();
+                }, 350);
+            }
+    
+        });
+
+        gamepad1.on('up', function (pad, button, index) {
+            if (pad === 2){
+                setTimeout(() => {
+                    window.location.reload();
+                }, 350);
+            }
         });
     }
 }

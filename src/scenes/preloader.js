@@ -8,7 +8,7 @@ export class Preloader extends Phaser.Scene {
     {
         this.load.setPath('public/assets');
         /* CARRITO */
-        this.load.spritesheet('player', './elems/carrito.png', {
+        this.load.spritesheet('player-idle', './elems/carrito.png', {
             frameWidth: 259, // 1036 / 4
             frameHeight: 229
         });

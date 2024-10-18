@@ -21,6 +21,10 @@ const config = {
             // debug: true
         }
     },
+    input :{
+        gamepad: true,
+		activePointers: 3,
+    },
     backgroundColor: '#fff'
 };
  
