@@ -186,7 +186,7 @@ export class Game extends Phaser.Scene {
         gamepad1.on('down', function (pad, button, value) {
             if (pad === 2){
                 setTimeout(() => {
-                    window.location.reload();
+                    window.location.href = 'https://bullmarketing.com.co/formulario-ctg/public/';
                 }, 350);
             }
     
@@ -195,7 +195,7 @@ export class Game extends Phaser.Scene {
         gamepad1.on('up', function (pad, button, index) {
             if (pad === 2){
                 setTimeout(() => {
-                    window.location.reload();
+                    window.location.href = 'https://bullmarketing.com.co/formulario-ctg/public/';
                 }, 350);
             }
         });
