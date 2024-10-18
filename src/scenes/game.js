@@ -88,7 +88,7 @@ export class Game extends Phaser.Scene {
         }
 
         elemsFall.forEach(elem => {
-            elem.setAngularVelocity(Phaser.Math.RadToDeg(elem.body.velocity.y / 1250));
+            elem.setAngularVelocity(Phaser.Math.RadToDeg(elem.body.velocity.y / 2500));
         });
     }
 
