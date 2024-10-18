@@ -71,7 +71,7 @@ export class Game extends Phaser.Scene {
         // Time
         setTimeout(() => {
             this.popUp();
-        }, 30000);
+        }, 300);
 
         // Colliders
         this.physics.add.collider(player, floor);
@@ -105,7 +105,7 @@ export class Game extends Phaser.Scene {
 
         player = this.physics.add.sprite((width / 2), height - 400, 'player', 0).setScale(0.5);
         player.setSize(280, 260, true);
-        player.score = 0;
+        player.score = 10;
         player.setCollideWorldBounds(true);
 
         this.add.image(width - 100, 100, 'score').setDepth(1);
@@ -133,7 +133,7 @@ export class Game extends Phaser.Scene {
         } else {
             let title = this.add.text((width / 2) - 150, (height / 2) - 195, 'INTENTALO\nDE NUEVO', { font: '100px primary-font', fill: '#fff', align: 'center' }).setDepth(2);
         }
-        let pts = this.add.text((width / 2) - 65, (height / 2) + 20, `${player.score} puntos`, { font: '50px primary-font', fill: '#fff' }).setDepth(2);
+        let pts = this.add.text((width / 2) - 75, (height / 2) + 20, `${player.score} puntos`, { font: '50px primary-font', fill: '#fff' }).setDepth(2);
         let volver = this.add.image((width / 2), (height / 2) + 220, 'volver').setScale(1.2).setInteractive().setDepth(2);
 
         volver.on('pointerdown', function () {
