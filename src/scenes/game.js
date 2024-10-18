@@ -6,7 +6,7 @@ let width, height, mContext, floor, player, elemsFall = [],
 let goRight = false, goLeft = false, leftBtn, rightBtn;
 
 // Filled
-const AREPAVELOCITY = 480;
+const CARRITOVELOCITY = 600;
 const FALLING_ELEMENTS = ['bull1', 'bull2', 'bull3', 'bull4']; // Agregar claves de los elementos
 
 export class Game extends Phaser.Scene {
@@ -46,11 +46,12 @@ export class Game extends Phaser.Scene {
             goRight = false;
         });
 
-        this.physics.world.on('worldstep', () => {
-            player.setAngularVelocity(
-                Phaser.Math.RadToDeg(player.body.velocity.x / player.body.halfWidth)
-            );
-        });
+        //Girar
+        // this.physics.world.on('worldstep', () => {
+        //     player.setAngularVelocity(
+        //         Phaser.Math.RadToDeg(player.body.velocity.x / player.body.halfWidth)
+        //     );
+        // });
 
         // Elems Fall
         elemsInterval = setInterval(() => {
@@ -71,9 +72,9 @@ export class Game extends Phaser.Scene {
 
     update() {
         if (goLeft) {
-            player.setVelocityX(-AREPAVELOCITY);
+            player.setVelocityX(-CARRITOVELOCITY);
         } else if (goRight) {
-            player.setVelocityX(AREPAVELOCITY);
+            player.setVelocityX(CARRITOVELOCITY);
         } else {
             player.setVelocityX(0);
         }
@@ -89,13 +90,13 @@ export class Game extends Phaser.Scene {
 
         this.add.image(0, 0, 'background2').setOrigin(0);
         floor = this.physics.add.staticGroup();
-        floor.create(15, (height - 190), '').setSize(width, 20).setOffset(0, 20).setAlpha(0.001);
+        floor.create(15, (height - 160), '').setSize(width, 20).setOffset(0, 20).setAlpha(0.001);
 
         leftBtn = this.add.image(250, height - 72, 'left-btn').setScale(1.5).setInteractive().setDepth(1);
         rightBtn = this.add.image(leftBtn.x + 200, height - 72, 'right-btn').setScale(1.5).setInteractive().setDepth(1);
 
         player = this.physics.add.sprite((width / 2), height - 400, 'player', 0).setScale(0.5);
-        player.setSize(270, 260, true);
+        player.setSize(280, 260, true);
         player.score = 0;
         player.setCollideWorldBounds(true);
 
@@ -120,12 +121,12 @@ export class Game extends Phaser.Scene {
 
         let popUp = this.add.image((width / 2), (height / 2), 'popUp').setScale(1.5).setDepth(1);
         if (player.score > 19) {
-            let title = this.add.text((width / 2) - 230, (height / 2) - 150, 'GANASTE', { font: '180px primary-font', fill: '#fff' }).setDepth(2);
+            let title = this.add.text((width / 2) - 200, (height / 2) - 150, 'GANASTE', { font: '150px primary-font', fill: '#fff' }).setDepth(2);
         } else {
             let title = this.add.text((width / 2) - 150, (height / 2) - 195, 'INTENTALO\nDE NUEVO', { font: '100px primary-font', fill: '#fff', align: 'center' }).setDepth(2);
         }
         let pts = this.add.text((width / 2) - 70, (height / 2) + 20, `${player.score} puntos`, { font: '50px primary-font', fill: '#fff' }).setDepth(2);
-        let volver = this.add.image((width / 2) + 10, (height / 2) + 220, 'volver').setScale(1.2).setInteractive().setDepth(2);
+        let volver = this.add.image((width / 2), (height / 2) + 220, 'volver').setScale(1.2).setInteractive().setDepth(2);
 
         volver.on('pointerdown', function () {
             volver.setScale(1);
