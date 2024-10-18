@@ -71,7 +71,7 @@ export class Game extends Phaser.Scene {
         // Time
         setTimeout(() => {
             this.popUp();
-        }, 300);
+        }, 30000);
 
         // Colliders
         this.physics.add.collider(player, floor);
@@ -105,7 +105,7 @@ export class Game extends Phaser.Scene {
 
         player = this.physics.add.sprite((width / 2), height - 400, 'player', 0).setScale(0.5);
         player.setSize(280, 260, true);
-        player.score = 10;
+        player.score = 0;
         player.setCollideWorldBounds(true);
 
         this.add.image(width - 100, 100, 'score').setDepth(1);
