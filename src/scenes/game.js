@@ -19,34 +19,34 @@ export class Game extends Phaser.Scene {
 
     create() {
         mContext = this;
-        leftBtn.on('pointerdown', function () {
-            leftBtn.setScale(1.3);
-            goLeft = true;
-        });
+        // leftBtn.on('pointerdown', function () {
+        //     leftBtn.setScale(1.3);
+        //     goLeft = true;
+        // });
 
-        leftBtn.on('pointerup', function () {
-            goLeft = false;
-        });
+        // leftBtn.on('pointerup', function () {
+        //     goLeft = false;
+        // });
 
-        leftBtn.on('pointerout', () => {
-            leftBtn.setScale(1.5);
-            goLeft = false;
-        });
-        // --------------------------------------
+        // leftBtn.on('pointerout', () => {
+        //     leftBtn.setScale(1.5);
+        //     goLeft = false;
+        // });
+        // // --------------------------------------
 
-        rightBtn.on('pointerdown', function () {
-            rightBtn.setScale(1.3);
-            goRight = true;
-        });
+        // rightBtn.on('pointerdown', function () {
+        //     rightBtn.setScale(1.3);
+        //     goRight = true;
+        // });
 
-        rightBtn.on('pointerup', function () {
-            goRight = false;
-        });
+        // rightBtn.on('pointerup', function () {
+        //     goRight = false;
+        // });
 
-        rightBtn.on('pointerout', () => {
-            rightBtn.setScale(1.5);
-            goRight = false;
-        });
+        // rightBtn.on('pointerout', () => {
+        //     rightBtn.setScale(1.5);
+        //     goRight = false;
+        // });
 
         //Girar
         // this.physics.world.on('worldstep', () => {
@@ -122,12 +122,12 @@ export class Game extends Phaser.Scene {
 
         this.add.image(0, 0, 'background2').setOrigin(0);
         floor = this.physics.add.staticGroup();
-        floor.create(15, (height - 160), '').setSize(width, 20).setOffset(0, 20).setAlpha(0.001);
+        floor.create(15, (height - 60), '').setSize(width, 20).setOffset(0, 20).setAlpha(0.001);
 
-        leftBtn = this.add.image(250, height - 72, 'left-btn').setScale(1.5).setInteractive().setDepth(1);
-        rightBtn = this.add.image(leftBtn.x + 200, height - 72, 'right-btn').setScale(1.5).setInteractive().setDepth(1);
+        // leftBtn = this.add.image(250, height - 72, 'left-btn').setScale(1.5).setInteractive().setDepth(1);
+        // rightBtn = this.add.image(leftBtn.x + 200, height - 72, 'right-btn').setScale(1.5).setInteractive().setDepth(1);
 
-        player = this.physics.add.sprite((width / 2), height - 400, 'player-idle', 0).setScale(0.5);
+        player = this.physics.add.sprite((width / 2), height - 150, 'player-idle', 0).setScale(0.5);
         player.setSize(280, 260, true);
         player.score = 0;
         player.setCollideWorldBounds(true);
