@@ -162,7 +162,7 @@ export class Game extends Phaser.Scene {
         elemsInterval = null;
 
         let popUp = this.add.image((width / 2), (height / 2), 'popUp').setScale(1.5).setDepth(1);
-        if (player.score > 19) {
+        if (player.score > 35) {
             let title = this.add.text((width / 2) - 200, (height / 2) - 150, 'GANASTE', { font: '150px primary-font', fill: '#fff' }).setDepth(2);
         } else {
             let title = this.add.text((width / 2) - 150, (height / 2) - 195, 'INTENTALO\nDE NUEVO', { font: '100px primary-font', fill: '#fff', align: 'center' }).setDepth(2);
@@ -173,7 +173,7 @@ export class Game extends Phaser.Scene {
         volver.on('pointerdown', function () {
             volver.setScale(1);
             setTimeout(() => {
-                window.location.reload();
+                window.location.href = 'https://bullmarketing.com.co/formulario-ctg/public/';
             }, 350);
         });
 
